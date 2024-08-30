@@ -10,10 +10,6 @@ project(opengv VERSION 1.0 LANGUAGES CXX)
 #  MinSizeRel (CMAKE_C_FLAGS_MINSIZEREL or CMAKE_CXX_FLAGS_MINSIZEREL)
 
 
-#set the default path for built executables to the "bin" directory
-set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
-#set the default path for built libraries to the "lib" directory
-set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/lib)
 
 OPTION(BUILD_TESTS "Build tests" ON)
 OPTION(BUILD_PYTHON "Build Python extension" OFF)
@@ -154,6 +150,7 @@ set( OPENGV_HEADER_FILES
   include/opengv/point_cloud/MAPointCloud.hpp )
 
 add_library( opengv ${OPENGV_SOURCE_FILES} ${OPENGV_HEADER_FILES} )
+target_link_libraries(opengv PUBLIC Eigen3::Eigen)
 add_library( random_generators test/random_generators.cpp test/random_generators.hpp test/experiment_helpers.cpp test/experiment_helpers.hpp test/time_measurement.cpp test/time_measurement.hpp )
 set_target_properties( opengv random_generators PROPERTIES
                     SOVERSION ${PROJECT_VERSION}

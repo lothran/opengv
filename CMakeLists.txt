@@ -152,6 +152,7 @@ set( OPENGV_HEADER_FILES
 add_library( opengv ${OPENGV_SOURCE_FILES} ${OPENGV_HEADER_FILES} )
 target_link_libraries(opengv PUBLIC Eigen3::Eigen)
 set(ADDITIONAL_INCLUDE_DIRS ${EIGEN_INCLUDE_DIRS} ${EIGEN_INCLUDE_DIR}/unsupported)
+
 add_library( random_generators test/random_generators.cpp test/random_generators.hpp test/experiment_helpers.cpp test/experiment_helpers.hpp test/time_measurement.cpp test/time_measurement.hpp )
 set_target_properties( opengv random_generators PROPERTIES
                     SOVERSION ${PROJECT_VERSION}
